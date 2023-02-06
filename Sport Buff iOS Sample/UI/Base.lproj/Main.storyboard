@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_12" orientation="landscape" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Gibson-SemiBold.otf">
+            <string>Gibson-SemiBold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Sport_Buff_iOS_Sample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="852" height="393"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jay-OB-lg4">
+                                <rect key="frame" x="361.33333333333331" y="187" width="129.33333333333331" height="44"/>
+                                <color key="backgroundColor" red="0.21960784310000001" green="0.64705882349999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Ypy-eC-RHP"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Launch Demo" cornerStyle="medium">
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="FmW-pw-GuX" kind="show" id="ZRF-hO-udb"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Jay-OB-lg4" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="krx-Fr-afk"/>
+                            <constraint firstItem="Jay-OB-lg4" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="ojK-Gp-l4S"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="132" y="-27"/>
+        </scene>
+        <!--Stream View Controller-->
+        <scene sceneID="b0G-IO-JVR">
+            <objects>
+                <viewController storyboardIdentifier="StreamViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="FmW-pw-GuX" customClass="StreamViewController" customModule="Buff_Up" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aaJ-lY-G7h">
+                        <rect key="frame" x="0.0" y="0.0" width="852" height="393"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wCM-Z7-5hP">
+                                <rect key="frame" x="76.666666666666686" y="0.0" width="698.66666666666652" height="393"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="wCM-Z7-5hP" secondAttribute="height" multiplier="16:9" id="vgm-hi-kaw"/>
+                                </constraints>
+                            </view>
+                            <button hidden="YES" opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qco-Fr-bO1" customClass="RoundedCornersButton" customModule="Buff_Up" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="77" width="115" height="36"/>
+                                <color key="backgroundColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="hww-Rw-oF3"/>
+                                    <constraint firstAttribute="width" constant="115" id="sLv-p2-hdu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Gibson-SemiBold" family="Gibson" pointSize="12"/>
+                                <inset key="titleEdgeInsets" minX="7" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="-5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Leave Game" image="Icon metro-exit">
+                                    <color key="titleColor" red="0.1764705882" green="0.1764705882" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="18"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="exitStream:" destination="FmW-pw-GuX" eventType="touchUpInside" id="rBc-38-PsW"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="BYO-xM-2RI"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Qco-Fr-bO1" firstAttribute="leading" secondItem="BYO-xM-2RI" secondAttribute="leading" id="Hqj-wn-prU"/>
+                            <constraint firstItem="wCM-Z7-5hP" firstAttribute="centerX" secondItem="aaJ-lY-G7h" secondAttribute="centerX" id="jg1-aV-Vkc"/>
+                            <constraint firstAttribute="bottom" secondItem="wCM-Z7-5hP" secondAttribute="bottom" id="liN-Xm-N0V"/>
+                            <constraint firstItem="Qco-Fr-bO1" firstAttribute="top" secondItem="BYO-xM-2RI" secondAttribute="top" constant="18" id="so1-wM-noE"/>
+                            <constraint firstItem="wCM-Z7-5hP" firstAttribute="top" secondItem="aaJ-lY-G7h" secondAttribute="top" id="tka-WF-lsS"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="bRS-iL-4uj"/>
+                    <connections>
+                        <outlet property="exitButton" destination="Qco-Fr-bO1" id="7Ae-UW-DDd"/>
+                        <outlet property="videoView" destination="wCM-Z7-5hP" id="JBb-oW-5mY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CPQ-xy-vFF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1357" y="-12"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Icon metro-exit" width="12" height="13"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
