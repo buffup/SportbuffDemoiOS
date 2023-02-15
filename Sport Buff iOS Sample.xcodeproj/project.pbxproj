@@ -14,7 +14,6 @@
 		E61D9A602990FAEA0059F966 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E61D9A5E2990FAEA0059F966 /* Main.storyboard */; };
 		E61D9A622990FAEB0059F966 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E61D9A612990FAEB0059F966 /* Assets.xcassets */; };
 		E61D9A652990FAEB0059F966 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E61D9A632990FAEB0059F966 /* LaunchScreen.storyboard */; };
-		E61D9A6D2990FE280059F966 /* LandscapeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61D9A6C2990FE270059F966 /* LandscapeViewController.swift */; };
 		E61D9A6F2990FE590059F966 /* StreamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61D9A6E2990FE590059F966 /* StreamViewController.swift */; };
 		E61D9A7229910BB80059F966 /* Date+Unix.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61D9A7129910BB80059F966 /* Date+Unix.swift */; };
 /* End PBXBuildFile section */
@@ -30,7 +29,6 @@
 		E61D9A612990FAEB0059F966 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E61D9A642990FAEB0059F966 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E61D9A662990FAEB0059F966 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E61D9A6C2990FE270059F966 /* LandscapeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandscapeViewController.swift; sourceTree = "<group>"; };
 		E61D9A6E2990FE590059F966 /* StreamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamViewController.swift; sourceTree = "<group>"; };
 		E61D9A7129910BB80059F966 /* Date+Unix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Unix.swift"; sourceTree = "<group>"; };
 		FF5973EA890F98920CD80D46 /* Pods-Sport Buff iOS Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sport Buff iOS Sample.release.xcconfig"; path = "Target Support Files/Pods-Sport Buff iOS Sample/Pods-Sport Buff iOS Sample.release.xcconfig"; sourceTree = "<group>"; };
@@ -100,7 +98,6 @@
 			isa = PBXGroup;
 			children = (
 				E61D9A5C2990FAEA0059F966 /* ViewController.swift */,
-				E61D9A6C2990FE270059F966 /* LandscapeViewController.swift */,
 				E61D9A6E2990FE590059F966 /* StreamViewController.swift */,
 			);
 			path = ViewControllers;
@@ -243,7 +240,6 @@
 				E61D9A7229910BB80059F966 /* Date+Unix.swift in Sources */,
 				E61D9A5D2990FAEA0059F966 /* ViewController.swift in Sources */,
 				E61D9A592990FAEA0059F966 /* AppDelegate.swift in Sources */,
-				E61D9A6D2990FE280059F966 /* LandscapeViewController.swift in Sources */,
 				E61D9A5B2990FAEA0059F966 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -320,7 +316,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -374,7 +370,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -391,7 +387,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 2ZJ696D3ZA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Sport Buff iOS Sample/Info.plist";
@@ -400,14 +396,14 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "buffup.Sport-Buff-iOS-Sample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -423,7 +419,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 2ZJ696D3ZA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Sport Buff iOS Sample/Info.plist";
@@ -432,14 +428,14 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "buffup.Sport-Buff-iOS-Sample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

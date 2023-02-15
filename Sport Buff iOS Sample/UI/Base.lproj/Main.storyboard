@@ -52,24 +52,17 @@
         <!--Stream View Controller-->
         <scene sceneID="b0G-IO-JVR">
             <objects>
-                <viewController storyboardIdentifier="StreamViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="FmW-pw-GuX" customClass="StreamViewController" customModule="Buff_Up" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StreamViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="FmW-pw-GuX" customClass="StreamViewController" customModule="Sport_Buff_iOS_Sample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aaJ-lY-G7h">
                         <rect key="frame" x="0.0" y="0.0" width="852" height="393"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wCM-Z7-5hP">
-                                <rect key="frame" x="76.666666666666686" y="0.0" width="698.66666666666652" height="393"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="wCM-Z7-5hP" secondAttribute="height" multiplier="16:9" id="vgm-hi-kaw"/>
-                                </constraints>
-                            </view>
-                            <button hidden="YES" opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qco-Fr-bO1" customClass="RoundedCornersButton" customModule="Buff_Up" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="77" width="115" height="36"/>
+                            <button hidden="YES" opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qco-Fr-bO1">
+                                <rect key="frame" x="25" y="77" width="115" height="36"/>
                                 <color key="backgroundColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="hww-Rw-oF3"/>
-                                    <constraint firstAttribute="width" constant="115" id="sLv-p2-hdu"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="115" id="sLv-p2-hdu"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Gibson-SemiBold" family="Gibson" pointSize="12"/>
                                 <inset key="titleEdgeInsets" minX="7" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -81,12 +74,6 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="18"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="exitStream:" destination="FmW-pw-GuX" eventType="touchUpInside" id="rBc-38-PsW"/>
@@ -96,22 +83,19 @@
                         <viewLayoutGuide key="safeArea" id="BYO-xM-2RI"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Qco-Fr-bO1" firstAttribute="leading" secondItem="BYO-xM-2RI" secondAttribute="leading" id="Hqj-wn-prU"/>
-                            <constraint firstItem="wCM-Z7-5hP" firstAttribute="centerX" secondItem="aaJ-lY-G7h" secondAttribute="centerX" id="jg1-aV-Vkc"/>
-                            <constraint firstAttribute="bottom" secondItem="wCM-Z7-5hP" secondAttribute="bottom" id="liN-Xm-N0V"/>
+                            <constraint firstItem="Qco-Fr-bO1" firstAttribute="leading" secondItem="BYO-xM-2RI" secondAttribute="leading" constant="25" id="Hqj-wn-prU"/>
+                            <constraint firstItem="BYO-xM-2RI" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Qco-Fr-bO1" secondAttribute="trailing" constant="12" id="riX-sI-QUK"/>
                             <constraint firstItem="Qco-Fr-bO1" firstAttribute="top" secondItem="BYO-xM-2RI" secondAttribute="top" constant="18" id="so1-wM-noE"/>
-                            <constraint firstItem="wCM-Z7-5hP" firstAttribute="top" secondItem="aaJ-lY-G7h" secondAttribute="top" id="tka-WF-lsS"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bRS-iL-4uj"/>
                     <connections>
                         <outlet property="exitButton" destination="Qco-Fr-bO1" id="7Ae-UW-DDd"/>
-                        <outlet property="videoView" destination="wCM-Z7-5hP" id="JBb-oW-5mY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CPQ-xy-vFF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1357" y="-12"/>
+            <point key="canvasLocation" x="1195" y="-28"/>
         </scene>
     </scenes>
     <resources>

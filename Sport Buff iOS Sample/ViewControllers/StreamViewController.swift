@@ -10,10 +10,9 @@ import UIKit
 import AVFoundation
 import SportBuff
 
-class StreamViewController: LandscapeViewController {
+class StreamViewController: UIViewController {
     
     @IBOutlet weak var exitButton: UIButton!
-    @IBOutlet weak var videoView: UIView!
     
     private var player: AVPlayer!
     private var timeObserver: Any?
@@ -30,7 +29,7 @@ class StreamViewController: LandscapeViewController {
     
     lazy var playerLayer: AVPlayerLayer = {
         let layer = AVPlayerLayer(player: player)
-        layer.frame = self.view.bounds
+		layer.frame = self.view.bounds
         layer.videoGravity = .resizeAspect
         layer.needsDisplayOnBoundsChange = true
         return layer
@@ -47,10 +46,19 @@ class StreamViewController: LandscapeViewController {
 			setupSportBuff()
         }
     }
+	
+	override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+		super.viewWillTransition(to: size, with: coordinator)
+		setupVideoView(size: size)
+	}
     
     deinit {
         cleanPlayer()
     }
+	
+	private func setupVideoView(size: CGSize) {
+		playerLayer.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+	}
     
     private func setupSportBuff() {
         //Initialize the SportBuff SDK
@@ -67,10 +75,10 @@ class StreamViewController: LandscapeViewController {
         
         view.addSubview(buffView)
         NSLayoutConstraint.activate([
-            buffView.leadingAnchor.constraint(equalTo: videoView.leadingAnchor),
-            buffView.trailingAnchor.constraint(equalTo: videoView.trailingAnchor),
-            buffView.topAnchor.constraint(equalTo: videoView.topAnchor),
-            buffView.bottomAnchor.constraint(equalTo: videoView.bottomAnchor, constant: 0)
+			buffView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            buffView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            buffView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            buffView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
         
         buffView.startStreamListener = { result in
@@ -104,7 +112,7 @@ class StreamViewController: LandscapeViewController {
         let asset = AVAsset(url: url)
         let playerItem = AVPlayerItem(asset: asset)
         player = AVPlayer(playerItem: playerItem)
-        self.view.layer.addSublayer(playerLayer)
+		self.view.layer.addSublayer(playerLayer)
         player.allowsExternalPlayback = false
         
         #if DEBUG
