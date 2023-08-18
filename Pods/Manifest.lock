@@ -1,16 +1,16 @@
 PODS:
-  - SportBuff (4.0.6)
+  - SportBuff (3.0.12)
 
 DEPENDENCIES:
-  - SportBuff
+  - SportBuff (= 3.0.12)
 
 SPEC REPOS:
   trunk:
     - SportBuff
 
 SPEC CHECKSUMS:
-  SportBuff: 1cd6331e90dbfe55386dcc5aafeef04dc492fda4
+  SportBuff: 603c7a79546ae1f48505a8b6e14f79a6607d7cd4
 
-PODFILE CHECKSUM: 36bdde4bb991a964779f82d814b6c3d66a50a145
+PODFILE CHECKSUM: 93c028a0d753694e8a78d1f9d76318ff3ef5e5de
 
 COCOAPODS: 1.11.3

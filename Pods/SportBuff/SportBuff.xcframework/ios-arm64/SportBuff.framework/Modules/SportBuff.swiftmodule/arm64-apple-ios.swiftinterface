@@ -1,7 +1,6 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)
+// swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
 // swift-module-flags: -target arm64-apple-ios12.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name SportBuff
-// swift-module-flags-ignorable: -enable-bare-slash-regex
 import AVFoundation
 import CoreMedia
 import Foundation
@@ -11,22 +10,20 @@ import QuartzCore
 import Swift
 import SystemConfiguration
 import UIKit
-import Vision
 import _Concurrency
-import _StringProcessing
 import os.log
 import os
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class BuffView : UIKit.UIView {
-  @_Concurrency.MainActor(unsafe) public var layerZPosition: CoreFoundation.CGFloat {
+  @_Concurrency.MainActor(unsafe) public var layerZPosition: CoreGraphics.CGFloat {
     get
     set
   }
-  @_Concurrency.MainActor(unsafe) public static var keyboardFromTextFieldOffset: CoreFoundation.CGFloat
+  @_Concurrency.MainActor(unsafe) public static var keyboardFromTextFieldOffset: CoreGraphics.CGFloat
   @_Concurrency.MainActor(unsafe) public var startStreamListener: ((Swift.Result<WebSocketServiceConnectionStatus, Swift.Error>) -> Swift.Void)?
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
   @objc deinit
-  @_Concurrency.MainActor(unsafe) @objc override dynamic open func hitTest(_ point: CoreFoundation.CGPoint, with event: UIKit.UIEvent?) -> UIKit.UIView?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func hitTest(_ point: CoreGraphics.CGPoint, with event: UIKit.UIEvent?) -> UIKit.UIView?
   @_Concurrency.MainActor(unsafe) public func startStream(streamId: Swift.String?, providerId: Swift.String?, listenerCallbackQueue: Dispatch.DispatchQueue = .main)
   @_Concurrency.MainActor(unsafe) public func provideVOD(playbackTime time: CoreMedia.CMTime)
   @_Concurrency.MainActor(unsafe) public func provideSync(timeStamp: Swift.Int)
@@ -51,7 +48,9 @@ public enum SDKError : Swift.Error, Swift.Equatable {
 public enum WebSocketServiceConnectionStatus {
   case connecting
   case connected
+  case reconnecting
   case disconnected
+  case disconnectedUnexpectedly
   case vodStarted
   case failed(error: Swift.Error)
 }
@@ -62,26 +61,5 @@ public enum StartStreamError : Swift.Error, Swift.Equatable {
   case connectionToServiceFailed
   case general(description: Swift.String)
   public static func == (a: StartStreamError, b: StartStreamError) -> Swift.Bool
-}
-@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class SecondScreenViewController : UIKit.UIViewController {
-  @_Concurrency.MainActor(unsafe) open var qrCodeFullURL: Swift.String?
-  @_Concurrency.MainActor(unsafe) @objc override dynamic open var shouldAutorotate: Swift.Bool {
-    @objc get
-  }
-  @_Concurrency.MainActor(unsafe) @objc override dynamic open var supportedInterfaceOrientations: UIKit.UIInterfaceOrientationMask {
-    @objc get
-  }
-  @_Concurrency.MainActor(unsafe) @objc override dynamic open var preferredInterfaceOrientationForPresentation: UIKit.UIInterfaceOrientation {
-    @objc get
-  }
-  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidLoad()
-  @objc deinit
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
-  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
-}
-extension Foundation.URL {
-  public var queryParameters: [Swift.String : Swift.String]? {
-    get
-  }
 }
 extension SDKError : Swift.Hashable {}
