@@ -20,7 +20,7 @@ class StreamViewController: UIViewController {
 	//TODO: Replace with your give client account name
 	private let clientAccount = "sportbuff"
 	
-    private let buffView = BuffView()
+    private lazy var buffView = BuffView()
 	private var startDate: Date?
 	
     private var isSeeking = false
@@ -80,30 +80,32 @@ class StreamViewController: UIViewController {
             buffView.topAnchor.constraint(equalTo: self.view.topAnchor),
             buffView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
-        
-        buffView.startStreamListener = { result in
-            switch result {
-            case .success(let status):
-                print("status", status)
-				DispatchQueue.main.async {
-					switch status {
-					case .connected:
-						//TODO: This should be the actual start Date of the video feed
-						//this is only used if Time Synchronization is enabled in the Stream Settings
-						//for this demo we are using the time now, but this should be changed obviously
-						self.startDate = Date()
-					default:
-						()
-					}
-				}
-            case .failure(let error):
-                print(error.localizedDescription)
+        DispatchQueue.main.async {
+            self.buffView.startStreamListener = { result in
+                switch result {
+                case .success(let status):
+                    print("status", status)
+                    DispatchQueue.main.async {
+                        switch status {
+                        case .connected:
+                            //TODO: This should be the actual start Date of the video feed
+                            //this is only used if Time Synchronization is enabled in the Stream Settings
+                            //for this demo we are using the time now, but this should be changed obviously
+                            self.startDate = Date()
+                        default:
+                            ()
+                        }
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
             }
+            
+            
+            //TODO: Use either a streamId that is obtained from the SportBuff Dashboard, or use a unique identifier in the providerId field which
+            // needs to be added to the SportBuff Dashboard in the stream's provider Id field
+            self.buffView.startStream(streamId: nil, providerId: "buffRedAppDemo")
         }
-		
-		//TODO: Use either a streamId that is obtained from the SportBuff Dashboard, or use a unique identifier in the providerId field which
-		// needs to be added to the SportBuff Dashboard in the stream's provider Id field
-		buffView.startStream(streamId: nil, providerId: "buffRedAppDemo")
 		
 		sportBuffInitialized = true
     }
