@@ -82,22 +82,23 @@ class StreamViewController: UIViewController {
         ])
         DispatchQueue.main.async {
             self.buffView.startStreamListener = { result in
-                switch result {
-                case .success(let status):
-                    print("status", status)
-                    DispatchQueue.main.async {
-                        switch status {
-                        case .connected:
-                            //TODO: This should be the actual start Date of the video feed
-                            //this is only used if Time Synchronization is enabled in the Stream Settings
-                            //for this demo we are using the time now, but this should be changed obviously
-                            self.startDate = Date()
-                        default:
-                            ()
-                        }
+                guard let success = result.success else {
+                    print(result.failure?.localizedDescription ?? "")
+                    return
+                }
+                
+                print("status", success.status)
+                
+                DispatchQueue.main.async {
+                    switch success.status {
+                    case .connected:
+                        //TODO: This should be the actual start Date of the video feed
+                        //this is only used if Time Synchronization is enabled in the Stream Settings
+                        //for this demo we are using the time now, but this should be changed obviously
+                        self.startDate = Date()
+                    default:
+                        ()
                     }
-                case .failure(let error):
-                    print(error.localizedDescription)
                 }
             }
             
