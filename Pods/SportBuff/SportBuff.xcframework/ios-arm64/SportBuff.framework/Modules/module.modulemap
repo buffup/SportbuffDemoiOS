@@ -6,6 +6,6 @@ framework module SportBuff {
 }
 
 module SportBuff.Swift {
-    header "SportBuff-Swift.h"
-    requires objc
+  header "SportBuff-Swift.h"
+  requires objc
 }

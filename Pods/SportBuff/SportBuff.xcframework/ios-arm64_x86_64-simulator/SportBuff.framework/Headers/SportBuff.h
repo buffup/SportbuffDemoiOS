@@ -16,4 +16,11 @@ FOUNDATION_EXPORT const unsigned char SportBuffVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <SportBuff/PublicHeader.h>
 
-
+// declare WebSocketServiceConnectionStatusStatus enum
+typedef NS_ENUM(NSInteger, WebSocketServiceConnectionStatusStatus) {
+    Connecting = 0,
+    Connected,
+    Disconnected,
+    VodStarted,
+    Failed
+};

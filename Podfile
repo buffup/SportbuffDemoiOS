@@ -6,5 +6,5 @@ target 'Sport Buff iOS Sample' do
   use_frameworks!
 
   # Pods for Sport Buff iOS Sample
-  pod 'SportBuff', '3.0.12'
+  pod 'SportBuff', '5.0.0'
 end

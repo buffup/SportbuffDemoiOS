@@ -1,58 +1,90 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
+// swift-compiler-version: Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)
 // swift-module-flags: -target x86_64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name SportBuff
+// swift-module-flags-ignorable: -enable-bare-slash-regex
 import AVFoundation
+import AudioToolbox
 import CoreMedia
 import Foundation
+import LinkPresentation
 import Network
 import QuartzCore
 @_exported import SportBuff
 import Swift
 import SystemConfiguration
 import UIKit
+import Vision
+import WebKit
 import _Concurrency
+import _StringProcessing
 import os.log
 import os
+@objc public class WebSocketServiceConnectionStatusResult : ObjectiveC.NSObject {
+  @objc final public let success: SportBuff.WebSocketServiceConnectionStatus?
+  @objc final public let failure: Swift.Error?
+  @objc public init(success: SportBuff.WebSocketServiceConnectionStatus)
+  @objc public init(failure: Swift.Error)
+  @objc deinit
+}
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class BuffView : UIKit.UIView {
-  @_Concurrency.MainActor(unsafe) public var layerZPosition: CoreGraphics.CGFloat {
+  @_Concurrency.MainActor(unsafe) public var layerZPosition: CoreFoundation.CGFloat {
     get
     set
   }
-  @_Concurrency.MainActor(unsafe) public static var keyboardFromTextFieldOffset: CoreGraphics.CGFloat
-  @_Concurrency.MainActor(unsafe) public var startStreamListener: ((Swift.Result<SportBuff.WebSocketServiceConnectionStatus, Swift.Error>) -> Swift.Void)?
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) public static var keyboardFromTextFieldOffset: CoreFoundation.CGFloat
+  @objc @_Concurrency.MainActor(unsafe) public var startStreamListener: ((SportBuff.WebSocketServiceConnectionStatusResult) -> Swift.Void)?
+  @_Concurrency.MainActor(unsafe) public var onBuffUiVisible: (() -> Swift.Void)?
+  @_Concurrency.MainActor(unsafe) public var onBuffUiHidden: (() -> Swift.Void)?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
   @objc deinit
-  @_Concurrency.MainActor(unsafe) @objc override dynamic open func hitTest(_ point: CoreGraphics.CGPoint, with event: UIKit.UIEvent?) -> UIKit.UIView?
-  @_Concurrency.MainActor(unsafe) public func startStream(streamId: Swift.String?, providerId: Swift.String?, listenerCallbackQueue: Dispatch.DispatchQueue = .main)
-  @_Concurrency.MainActor(unsafe) public func provideVOD(playbackTime time: CoreMedia.CMTime)
-  @_Concurrency.MainActor(unsafe) public func provideSync(timeStamp: Swift.Int)
-  @_Concurrency.MainActor(unsafe) public func displayMenu()
-  @_Concurrency.MainActor(unsafe) public func hideMenu()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func hitTest(_ point: CoreFoundation.CGPoint, with event: UIKit.UIEvent?) -> UIKit.UIView?
+  @available(*, deprecated, message: "This method is deprecated. Use startStream(streamId,externalId,listenerCallbackQueue) instead.")
+  @objc @_Concurrency.MainActor(unsafe) public func startStream(streamId: Swift.String?, providerId: Swift.String?, listenerCallbackQueue: Dispatch.DispatchQueue = .main)
+  @objc @_Concurrency.MainActor(unsafe) public func startStream(streamId: Swift.String?, externalId: Swift.String?, listenerCallbackQueue: Dispatch.DispatchQueue = .main)
+  @objc @_Concurrency.MainActor(unsafe) public func provideVOD(playbackTime time: CoreMedia.CMTime)
+  @objc @_Concurrency.MainActor(unsafe) public func provideSync(timeStamp: Swift.Int)
+  @objc @_Concurrency.MainActor(unsafe) public func displayMenu()
+  @objc @_Concurrency.MainActor(unsafe) public func hideMenu()
 }
-@_hasMissingDesignatedInitializers final public class SportBuff {
-  public static func initialize(clientAccount name: Swift.String, anonymousLogin: Swift.Bool = false)
-  public static func deinitialize()
-  public static func signInUser(token: Swift.String, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
-  public static func setBuffSoundVolume(level: Swift.Float)
+@objc @_inheritsConvenienceInitializers final public class SportBuff : ObjectiveC.NSObject {
+  public static var onSignUp: (() -> Swift.Void)?
+  @objc public static func initialize(clientAccount name: Swift.String, anonymousLogin: Swift.Bool = false)
+  @objc public static func deinitialize()
+  @objc public static func signInUser(token: Swift.String, completion: @escaping (Swift.Error?) -> Swift.Void)
+  @objc public static func signInUserAnonymously(completion: @escaping (Swift.Error?) -> Swift.Void)
+  @objc public static func setBuffSoundVolume(level: Swift.Float)
+  @objc public static func enable()
+  @objc public static func disable()
+  @objc override dynamic public init()
   @objc deinit
 }
 public enum SDKError : Swift.Error, Swift.Equatable {
-  case sdkNotInitialized
+  case clientNameIsMissing
+  case anonymousLoginRequired
   public func hash(into hasher: inout Swift.Hasher)
   public static func == (a: SportBuff.SDKError, b: SportBuff.SDKError) -> Swift.Bool
   public var hashValue: Swift.Int {
     get
   }
 }
-public enum WebSocketServiceConnectionStatus {
-  case connecting
-  case connected
-  case reconnecting
-  case disconnected
-  case disconnectedUnexpectedly
-  case vodStarted
-  case failed(error: Swift.Error)
+@objc public class WebSocketServiceConnectionStatus : ObjectiveC.NSObject {
+  @objc public enum Status : Swift.Int {
+    case connecting
+    case connected
+    case disconnected
+    case vodStarted
+    case failed
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  @objc public var status: SportBuff.WebSocketServiceConnectionStatus.Status
+  @objc public var error: Swift.Error?
+  @objc public init(status: SportBuff.WebSocketServiceConnectionStatus.Status, error: Swift.Error? = nil)
+  @objc deinit
 }
 public enum StartStreamError : Swift.Error, Swift.Equatable {
   case noStartValueProvided
@@ -62,4 +94,31 @@ public enum StartStreamError : Swift.Error, Swift.Equatable {
   case general(description: Swift.String)
   public static func == (a: SportBuff.StartStreamError, b: SportBuff.StartStreamError) -> Swift.Bool
 }
+extension UIKit.UIImageView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func removeFromSuperview()
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class SecondScreenViewController : UIKit.UIViewController {
+  @_Concurrency.MainActor(unsafe) open var qrCodeFullURL: Swift.String?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var shouldAutorotate: Swift.Bool {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var supportedInterfaceOrientations: UIKit.UIInterfaceOrientationMask {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var preferredInterfaceOrientationForPresentation: UIKit.UIInterfaceOrientation {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidLoad()
+  @objc deinit
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+}
+extension Foundation.URL {
+  public var queryParameters: [Swift.String : Swift.String]? {
+    get
+  }
+}
 extension SportBuff.SDKError : Swift.Hashable {}
+extension SportBuff.WebSocketServiceConnectionStatus.Status : Swift.Equatable {}
+extension SportBuff.WebSocketServiceConnectionStatus.Status : Swift.Hashable {}
+extension SportBuff.WebSocketServiceConnectionStatus.Status : Swift.RawRepresentable {}
